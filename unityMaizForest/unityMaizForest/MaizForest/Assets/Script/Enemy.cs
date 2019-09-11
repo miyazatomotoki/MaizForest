@@ -5,13 +5,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject Player;
-    public float spd;
+    float spd;
 
     float time; 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("Teleport");
+        spd = 5;
     }
 
     // Update is called once per frame
@@ -20,6 +21,18 @@ public class Enemy : MonoBehaviour
         Player = GameObject.Find("Player");
         transform.root.LookAt(Player.transform);
         transform.Translate(0, 0, spd * 0.1f);
+    }
+
+    public void MStart()
+    {
+        StartCoroutine("Teleport");
+        spd = 5;
+    }
+
+    public void MStop()
+    {
+        StopCoroutine("Teleport");
+        spd = 0;
     }
 
     IEnumerator Teleport()

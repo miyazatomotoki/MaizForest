@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public GameObject Slender;
     public float RotSpeed;
     public float Runspeed;
     void Update()
@@ -30,5 +24,21 @@ public class Player : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         z = z * Time.deltaTime * Runspeed;
         transform.Translate(0, 0, z);
+    }
+
+    public void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "Koya")
+        {
+            Slender.SendMessage("MStop");
+        }
+    }
+
+    public void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Koya")
+        {
+            Slender.SendMessage("MStart");
+        }
     }
 }

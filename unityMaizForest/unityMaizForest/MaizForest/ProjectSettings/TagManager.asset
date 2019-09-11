@@ -7,6 +7,7 @@ TagManager:
   - TrueKey
   - FalseKey
   - Gate
+  - Koya
   layers:
   - Default
   - TransparentFX
