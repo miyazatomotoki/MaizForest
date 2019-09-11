@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class KeyGet : MonoBehaviour
@@ -9,12 +10,13 @@ public class KeyGet : MonoBehaviour
     public GameObject FalseKey;
     public GameObject Gate;
     public int key = 0;
-
+    public Text text;
     private void Start()
     {
         TrueKey = GameObject.FindGameObjectWithTag("Player");
         FalseKey = GameObject.FindGameObjectWithTag("FalseKey");
         Gate = GameObject.FindGameObjectWithTag("Gate");
+        text = this.GetComponent<Text>(); 
     }
 
     void Update()
@@ -36,6 +38,8 @@ public class KeyGet : MonoBehaviour
                 Debug.Log("false");
                 key = 2;
             }
+            text.text = "鍵を手に入れた";
+            Invoke("message", 2);
         }
     }
 
@@ -54,4 +58,9 @@ public class KeyGet : MonoBehaviour
             }
         }
     }
+    void message()
+    {
+        text.text = "";
+    }
+
 }
